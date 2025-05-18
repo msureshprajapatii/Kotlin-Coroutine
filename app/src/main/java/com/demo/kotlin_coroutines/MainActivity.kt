@@ -69,7 +69,11 @@ class MainActivity : AppCompatActivity() {
             // Sequential
             launchCoroutineBuilder()
             asyncCoroutineBuilder()
+
+
+            // check suspend function exception
+            printFollowersWithLaunch()
         }
     }
-    
+
 }
