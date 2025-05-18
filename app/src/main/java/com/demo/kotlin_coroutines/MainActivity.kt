@@ -3,12 +3,9 @@ package com.demo.kotlin_coroutines
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.demo.kotlin_coroutines.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -73,6 +70,26 @@ class MainActivity : AppCompatActivity() {
 
             // check suspend function exception
             printFollowersWithLaunch()
+
+
+            // Launch different scenarios
+            secondScenarioWithLaunch()
+
+
+            // Child parent job hierarchy
+            executeParentChildJob()
+
+
+            // Cancel parent job
+            executeParentChildJobCancel()
+
+
+            // cancel child job
+            executeChildJobCancel()
+
+
+            // Execute long running task
+            executeLongRunningTask()
         }
     }
 

@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-suspend fun printFollowersWithLaunch(){
+suspend fun printFollowersWithLaunch() {
     var fbFollowers = 0
     var instaFollowers = 0
     var tweeterFollowers = 0
@@ -32,10 +32,27 @@ suspend fun printFollowersWithLaunch(){
 
 }
 
+
+suspend fun secondScenarioWithLaunch() {
+    var fbFollowers = 0
+    var tweeterFollowers = 0
+    var instaFollowers = 0
+
+    CoroutineScope(Dispatchers.IO).launch {
+        fbFollowers = getFaceBookFollowers()
+        tweeterFollowers = getTweeterFollowers()
+        instaFollowers = getInstagramFollowers()
+
+        Log.d(TAG, "secondScenarioWithLaunch =  fb = $fbFollowers | tweeter = $tweeterFollowers | insta = $instaFollowers" )
+
+    }
+
+}
+
 // When you uncomment throws Exception you can check what will happen
 suspend fun getTweeterFollowers(): Int {
     delay(500)
-   // throw Exception("Failed")
+    // throw Exception("Failed")
     return 55
 }
 
