@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.demo.kotlin_coroutines.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -61,24 +62,55 @@ class MainActivity : AppCompatActivity() {
 
         // Coroutine Builders
         CoroutineScope(Dispatchers.IO).launch {
-            printFollowers()
+
+            //  Parallel
+            launchWithoutJoin()
+
+            // Sequential
+            launchCoroutineBuilder()
+            asyncCoroutineBuilder()
         }
     }
 
-    // Launch
-    // Join is help us to suspend coroutine until task not complete
-    private suspend fun printFollowers() {
+    // its give result as zero(0) because its not wait until coroutine task are complete
+    //  its execute task in parallel manner
+    private suspend fun launchWithoutJoin() {
         var fbFollowers = 0
-       val job =  lifecycleScope.launch(Dispatchers.IO) {
+        val job = lifecycleScope.launch(Dispatchers.IO) {
+            fbFollowers = getFaceBookFollowers()
+        }
+        Log.e(TAG, "fbFollowers with launch without join : $fbFollowers")
+
+    }
+
+    // Launch Builder
+    // job.Join() is help us to suspend coroutine until task is not complete
+    // basically its execute task in sequentially manner
+    private suspend fun launchCoroutineBuilder() {
+        var fbFollowers = 0
+        val job = lifecycleScope.launch(Dispatchers.IO) {
             fbFollowers = getFaceBookFollowers()
         }
         job.join()
-        Log.e(TAG, "fbFollowers : $fbFollowers")
+        Log.e(TAG, "fbFollowers with launch and join : $fbFollowers")
     }
+
+    // Async Builder
+    // async.await() is help us to suspend coroutine until task is not complete
+    // Basically its execute task in sequentially manner when we use async await
+    // Benefit : Code concise compare to launch
+    private suspend fun asyncCoroutineBuilder() {
+        val job = lifecycleScope.async(Dispatchers.IO) {
+            getFaceBookFollowers()
+        }
+        Log.e(TAG, "fbFollowers with async and await: ${job.await()}")
+    }
+
 
     private suspend fun getFaceBookFollowers(): Int {
         delay(1000)
         return 45
     }
+
 
 }
