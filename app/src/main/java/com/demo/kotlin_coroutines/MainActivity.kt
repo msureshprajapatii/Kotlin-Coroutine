@@ -90,6 +90,9 @@ class MainActivity : AppCompatActivity() {
 
             // Execute long running task
             executeLongRunningTask()
+
+            // withContext
+            performTaskInWithContext()
         }
     }
 
