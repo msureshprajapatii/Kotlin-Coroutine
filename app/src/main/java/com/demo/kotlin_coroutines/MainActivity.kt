@@ -49,13 +49,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         // Suspending functions
         CoroutineScope(Dispatchers.Main).launch {
             task1()
             task2()
         }
-
 
         // Coroutine Builders
         CoroutineScope(Dispatchers.IO).launch {
@@ -67,26 +65,20 @@ class MainActivity : AppCompatActivity() {
             launchCoroutineBuilder()
             asyncCoroutineBuilder()
 
-
             // check suspend function exception
             printFollowersWithLaunch()
-
 
             // Launch different scenarios
             secondScenarioWithLaunch()
 
-
             // Child parent job hierarchy
             executeParentChildJob()
-
 
             // Cancel parent job
             executeParentChildJobCancel()
 
-
             // cancel child job
             executeChildJobCancel()
-
 
             // Execute long running task
             executeLongRunningTask()
@@ -95,5 +87,4 @@ class MainActivity : AppCompatActivity() {
             performTaskInWithContext()
         }
     }
-
 }
