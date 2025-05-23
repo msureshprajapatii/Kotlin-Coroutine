@@ -1,4 +1,4 @@
-package com.demo.kotlin_coroutines
+package com.demo.kotlin_coroutines.basic
 
 import android.util.Log
 import kotlinx.coroutines.yield

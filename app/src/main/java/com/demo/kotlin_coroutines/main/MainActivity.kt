@@ -1,8 +1,24 @@
-package com.demo.kotlin_coroutines
+package com.demo.kotlin_coroutines.main
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.demo.kotlin_coroutines.basic.TAG
+import com.demo.kotlin_coroutines.basic.asyncCoroutineBuilder
+import com.demo.kotlin_coroutines.basic.executeChildJobCancel
+import com.demo.kotlin_coroutines.basic.executeLongRunningTask
+import com.demo.kotlin_coroutines.basic.executeParentChildJob
+import com.demo.kotlin_coroutines.basic.executeParentChildJobCancel
+import com.demo.kotlin_coroutines.basic.executeTask
+import com.demo.kotlin_coroutines.basic.executeTaskWithCoroutine
+import com.demo.kotlin_coroutines.basic.executeTaskWithThread
+import com.demo.kotlin_coroutines.basic.launchCoroutineBuilder
+import com.demo.kotlin_coroutines.basic.launchWithoutJoin
+import com.demo.kotlin_coroutines.basic.performTaskInWithContext
+import com.demo.kotlin_coroutines.basic.printFollowersWithLaunch
+import com.demo.kotlin_coroutines.basic.secondScenarioWithLaunch
+import com.demo.kotlin_coroutines.basic.task1
+import com.demo.kotlin_coroutines.basic.task2
 import com.demo.kotlin_coroutines.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

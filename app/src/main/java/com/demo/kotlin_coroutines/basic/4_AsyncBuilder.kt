@@ -1,7 +1,6 @@
-package com.demo.kotlin_coroutines
+package com.demo.kotlin_coroutines.basic
 
 import android.util.Log
-import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
